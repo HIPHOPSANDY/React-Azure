@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: read #This is required for actions/checkout
 
@@ -21,14 +21,14 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: '22.x'
 
       - name: npm install, build, and test
         run: |
           npm install
           npm run build --if-present
           npm run test --if-present
-
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -51,17 +51,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9677178D1B874978B358A7B053757920 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7702B9F228584D83AE95787F374FC33F }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0381D18D11E34B69BBDE35205E0A0C45 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B91093F337B7465EAA799B36BE1495A1 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BE7794BC040143E182B82802DFCEF7EE }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D99B21BEFFDC4276ACB2AB42A45378CE }}
 
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
+        id: deploy-to-webapp
         with:
           app-name: 'my-react-app'
           slot-name: 'Production'
           package: .
-
           
-
