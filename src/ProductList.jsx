@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Backend API Base URL
 //http://localhost:8088
-const api = axios.create({ baseURL: 'http://my-springboot-app.azurewebsites.net/api/products' });
+const api = axios.create({ baseURL: 'https://my-springboot-app.azurewebsites.net/api/products' });
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
