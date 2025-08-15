@@ -34,7 +34,7 @@ export default function ProductList() {
 
   return (
     <div style={{ padding: '2rem' }}>
-      <h3>v1</h3>
+      <h3>v2</h3>
       <h2>Create Product</h2>
       <input
         type="text"
